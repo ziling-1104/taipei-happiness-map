@@ -1,0 +1,455 @@
+/* ============================================================
+   全局樣式
+============================================================ */
+
+body {
+    font-family: 'Hannotate SC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; /* 嘗試使用可愛手寫體或系統預設中文字體 */
+    background-color: #f7f9fd; /* 輕柔的背景色 */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.top-bar {
+    background: #A7FFEB; /* 淺綠松石色，清新可愛 */
+    color: #424242; /* 深灰色文字 */
+    padding: 14px 24px;
+    font-size: 22px; /* 稍微放大字體 */
+    font-weight: 700; /* 加粗 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 增加輕微陰影 */
+}
+
+.top-bar a {
+    color:#424242; /* 調整為深灰色，與背景對比 */
+    text-decoration:none;
+    font-weight: 500;
+}
+
+/* ================================
+   主體區塊（左地圖 + 右推薦）
+================================ */
+.container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px); /* 調整高度以考慮 top-bar */
+}
+
+.map-area {
+    flex: 2.5;
+    position: relative;
+    border-radius: 20px; /* 更圓潤的圓角 */
+    overflow: hidden; /* 確保圓角生效 */
+    margin: 15px; /* 與邊緣保持距離 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* 更明顯但柔和的陰影 */
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    flex: 1;
+    background: #FFFFFF;
+    border-left: none; /* 移除左邊框，讓陰影更突出 */
+    padding: 20px;
+    overflow-y: auto;
+    border-radius: 20px; /* 更圓潤的圓角 */
+    margin: 15px 15px 15px 0; /* 與邊緣保持距離 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* 更明顯但柔和的陰影 */
+}
+
+.sidebar h2 {
+    font-size: 24px; /* 放大標題 */
+    color: #64B5F6; /* 淺藍色，更柔和 */
+    margin-bottom: 15px;
+}
+
+/* ============================================================
+   推薦卡片
+============================================================ */
+.card {
+    background-color: #fff8f8; /* 淺粉色背景，更溫和 */
+    border-left: 8px solid var(--card-border-color, #ffb6c1); /* 左側邊框根據幸福指數顏色，預設可愛粉色 */
+    border-radius: 18px; /* 更圓潤的邊角 */
+    box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3); /* 柔和的粉色陰影 */
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* 懸停時輕微上浮 */
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4); /* 懸停時更明顯的陰影 */
+}
+
+.card-title {
+    font-size: 1.6em; /* 稍微大一點的標題 */
+    font-weight: bold;
+    color: #ff69b4; /* 可愛粉色標題 */
+    margin-bottom: 8px;
+    cursor: pointer; /* 表示可點擊 */
+}
+
+.card-cat {
+    font-size: 0.95em;
+    color: #888; /* 柔和的灰色 */
+    margin-bottom: 12px;
+}
+
+.happiness {
+    font-size: 1.2em; /* 幸福指數字體大小 */
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #66bb6a; /* 綠色系，與幸福感搭配 */
+}
+
+.show-detail {
+    color: #87ceeb; /* 天藍色連結 */
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    align-self: flex-start; /* 靠左對齊 */
+}
+
+.show-detail:hover {
+    text-decoration: underline;
+}
+
+.detail-box {
+    background-color: #f0f8ff; /* 淺藍色背景 */
+    border-left: 4px solid #87ceeb; /* 藍色左邊框 */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.5;
+    display: none;
+}
+
+/* 導航按鈕 */
+.btn-nav {
+    display: inline-block;
+    background: #FFCC80; /* 可愛橘色 */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px; /* 更圓潤 */
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 14px;
+    transition: 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-nav:hover {
+    background: #FFA726; /* 稍深的橘色 */
+}
+
+/* ============================================================
+   按鈕樣式
+============================================================ */
+.btn-checkin-enabled {
+    background-color: #87ceeb; /* 天藍色 */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 15px; /* 更圓潤 */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(135, 206, 235, 0.3);
+    font-weight: bold;
+}
+
+.btn-checkin-enabled:hover {
+    background-color: #6495ed; /* 深一點的藍色 */
+    transform: translateY(-1px);
+}
+
+.btn-checkin-disabled {
+    background-color: #cccccc; /* 灰色 */
+    color: #666666;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: not-allowed;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+/* ============================================================
+   Toast 訊息
+============================================================ */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #ff69b4; /* 粉色背景 */
+    color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/* ============================================================
+   心情選擇器
+============================================================ */
+.mood-selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* 增加間距 */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffe0e6; /* 可愛粉色背景 */
+    border-radius: 25px; /* 更圓潤的邊角 */
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2); /* 粉色陰影 */
+    margin-bottom: 20px;
+}
+
+.mood-selector a {
+    text-decoration: none;
+    color: #fff; /* 白色文字 */
+    background-color: #ff8fab; /* 可愛粉色按鈕 */
+    padding: 10px 20px;
+    border-radius: 20px; /* 超圓角膠囊形按鈕 */
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1em; /* 稍微大一點的字體 */
+    box-shadow: 0 3px 6px rgba(255, 105, 180, 0.3); /* 粉色陰影 */
+}
+
+.mood-selector a:hover,
+.mood-selector a.active {
+    background-color: #ff5c8a; /* 點擊或懸停時更深的粉色 */
+    transform: translateY(-2px); /* 輕微上浮效果 */
+    box-shadow: 0 5px 12px rgba(255, 105, 180, 0.4);
+}
+
+.mood-selector a.active-relax {
+    background: #BBDEFB; /* 淺藍色 */
+    color: white;
+}
+
+.mood-selector a.active-quiet {
+    background: #B2DFDB; /* 淺青色 */
+    color: white;
+}
+
+.mood-selector a.active-art {
+    background: #E1BEE7; /* 淺紫色 */
+    color: white;
+}
+
+.mood-selector a.active-active {
+    background: #FFCCBC; /* 淺紅色 */
+    color: white;
+}
+
+/* 已完成任務和成就區塊 */
+.completed-tasks h2, .unlocked-achievements h2 {
+    font-size: 22px; /* 稍微放大標題 */
+    color: #81C784; /* 更柔和的綠色 */
+    margin-bottom: 12px;
+    border-bottom: 2px solid #E0E0E0; /* 底部邊框 */
+    padding-bottom: 8px;
+}
+
+.task-item, .achievement-item {
+    background: #FFFFFF; /* 白色背景 */
+    padding: 15px;
+    border-radius: 15px; /* 更圓潤 */
+    margin-bottom: 12px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.task-item {
+    background: #F1F8E9; /* 淺綠色背景 */
+}
+
+.achievement-item {
+    background: #E3F2FD; /* 淺藍色背景 */
+}
+
+.achievement-item b {
+    color: #424242;
+}
+
+.achievement-item span {
+    font-size: 14px; /* 調整字體大小 */
+    color: #757575;
+}
+
+/* ================================
+   問卷表單區塊
+================================ */
+.survey-box {
+    background: white;
+    width: 600px; /* 稍微加大寬度 */
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px; /* 更圓潤 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.survey-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #64B5F6; /* 淺藍色 */
+    font-size: 30px;
+}
+
+.survey-box label {
+    font-size: 18px;
+    display: block;
+    margin: 15px 0 8px;
+    color: #424242;
+}
+
+.survey-box select,
+.survey-box input[type=radio] {
+    margin-top: 10px;
+}
+
+/* 送出按鈕 */
+.survey-submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #B3E5FC; /* 淺藍色 */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.survey-submit-btn:hover {
+    background: #81D4FA;
+}
+
+/* ================================
+   手機版自動排版
+================================ */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        flex: none;
+        width: 100%;
+        max-height: 400px; /* 調整高度 */
+        margin: 0; /* 手機版移除 margin */
+        border-radius: 0; /* 手機版移除圓角 */
+    }
+    .map-area {
+        height: 450px; /* 調整高度 */
+        margin: 0; /* 手機版移除 margin */
+        border-radius: 0; /* 手機版移除圓角 */
+    }
+
+    /* 針對手機調整標題欄 */
+    .top-bar {
+        font-size: 18px;
+        padding: 12px 18px;
+    }
+
+    /* 針對手機調整側邊欄內容 */
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    /* 針對手機調整心情選單 */
+    .mood-selector a {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin: 5px;
+    }
+
+    /* 針對手機調整推薦卡片 */
+    .recommend-card {
+        padding: 15px;
+    }
+
+    .recommend-card h3 {
+        font-size: 18px;
+    }
+
+    .recommend-card p {
+        font-size: 14px;
+    }
+
+    /* 針對手機調整問卷頁面 */
+    .survey-box {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .survey-box h2 {
+        font-size: 26px;
+    }
+
+    .survey-box label {
+        font-size: 16px;
+    }
+}
+
+/* ================================
+   任務成功彈跳動畫
+================================ */
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+#toast {
+    animation: pop 0.4s ease-out;
+}

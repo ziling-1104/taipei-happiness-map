@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>台北幸福地圖 Taipei Vibe Finder</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/static/main.css">
+
+</head>
+
+<body>
+
+<header class="top-bar">
+    ✨ 台北幸福地圖 🗺️
+    <a href="/survey">情緒問卷</a>
+</header>
+
+<div class="container">
+
+    <!-- 左地圖：Leaflet -->
+    <div id="map-area" class="map-area">
+        {{ map_html | safe }}
+    </div>
+
+    <!-- 右側推薦 -->
+    <div class="sidebar">
+
+        <div style="font-size:20px; font-weight:700; margin-bottom: 10px;">
+            今日心情：{{ mood }}
+        </div>
+        <div id="user-location" style="font-size: 14px; color: #555; margin-bottom: 15px;">
+            正在獲取您的位置...
+        </div>
+
+        <div class="mood-selector">
+            <a href="javascript:void(0);" onclick="switchMood('療癒放鬆')" class="{{ 'active-relax' if mood=='療癒放鬆' else '' }}">#療癒放鬆</a>
+            <a href="javascript:void(0);" onclick="switchMood('城市漫步')" class="{{ 'active-quiet' if mood=='城市漫步' else '' }}">#城市漫步</a>
+            <a href="javascript:void(0);" onclick="switchMood('文化探索')" class="{{ 'active-art' if mood=='文化探索' else '' }}">#文化探索</a>
+            <a href="javascript:void(0);" onclick="switchMood('活力充電')" class="{{ 'active-active' if mood=='活力充電' else '' }}">#活力充電</a>
+        </div>
+
+        <br>
+
+        <div id="rec-list">
+            {% for r in recommendations %}
+            <div class="recommend-card" style="border-left: 8px solid {{ r.happiness_color }};">
+                <div class="card-content">
+                <div style="font-size:18px;font-weight:700;">{{ r.name }}</div>
+                <div style="color:#636e72;font-size:13px;">分類：{{ r.category }}</div>
+                    <div style="font-size:20px;margin-top:8px;font-weight:700;color:{{ r.happiness_color }};">
+                    幸福指數：{{ r.happiness }}
+                </div>
+
+                <div class="show-detail" onclick="toggleDetail('{{ loop.index }}')">查看公式</div>
+                <button class="btn-checkin" onclick="completeTask('{{ r.name }}', {{ r.lat }}, {{ r.lon }})">打卡</button>
+
+                <div id="detail-{{ loop.index }}" class="detail-box">
+                    base：{{ r.base }}<br>
+                    weight：{{ r.weight }}<br>
+                    value_norm：{{ r.value_norm }}<br>
+                    原始 value：{{ r.value }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- 已完成任務顯示區塊 -->
+        <div class="completed-tasks" style="margin-top: 30px;">
+            <h2 style="font-size: 20px; color: #344675; margin-bottom: 10px;">已完成任務 ✨</h2>
+            <div id="completed-tasks-list">
+                {% if completed_tasks %}
+                    {% for task in completed_tasks %}
+                        <div class="task-item" style="background: #e6ffe6; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #a6e3a6;">
+                            {{ task.name }} ({{ task.timestamp.split('T')[0] }})
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: #777;">目前沒有已完成的任務。</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 已解鎖成就顯示區塊 -->
+        <div class="unlocked-achievements" style="margin-top: 30px;">
+            <h2 style="font-size: 20px; color: #344675; margin-bottom: 10px;">已解鎖成就 🏆</h2>
+            <div id="unlocked-achievements-list">
+                {% if completed_tasks %}
+                    {% for item in completed_tasks %}
+                        {% if 'description' in item %}
+                            <div class="achievement-item" style="background: #e6f7ff; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #a6d9f0;">
+                                <b>{{ item.name }}</b><br>
+                                <span style="font-size: 13px; color: #555;">{{ item.description }} ({{ item.timestamp.split('T')[0] }})</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p style="color: #777;">目前沒有已解鎖的成就。</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- 主 JS -->
+<script src="/static/main.js"></script>
+
+<script>
+    // ⭐ 必須定義的變數（主程式才知道有哪些推薦）
+    const recommendationsData = {{ recommendations|tojson }};
+
+    window.onload = function () {
+        // 在這裡調用 renderRecommendationList，確保 recommendationsData 已載入
+        renderRecommendationList(recommendationsData);
+        showUserLocation(); // 確保在渲染列表後顯示用戶位置，以便啟用按鈕
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* ============================================================
+   Survey Page — 專題等級設計
+   ============================================================ */
+
+body {
+    font-family: 'Hannotate SC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; /* 統一可愛字體 */
+    background-color: #fce4ec; /* 柔和的粉色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.survey-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px; /* 更圓潤 */
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4); /* 溫暖的粉色陰影 */
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.survey-container h2 {
+    text-align: center;
+    color: #ff69b4; /* 可愛粉色標題 */
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.2); /* 輕微文字陰影 */
+}
+
+.q {
+    font-size: 1.1em;
+    color: #ff69b4; /* 問題顏色也用粉色 */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select,
+input[type="radio"] + label {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ffb6c1; /* 柔和的粉色邊框 */
+    border-radius: 10px; /* 圓角輸入框 */
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: #fffafc; /* 淺色背景 */
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+select:focus,
+input[type="radio"] + label:focus-within {
+    border-color: #ff69b4; /* 焦點時更亮的粉色 */
+    outline: none;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+label {
+    display: block; /* 讓每個選項獨佔一行 */
+    margin-bottom: 10px;
+    color: #555;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#submit-btn {
+    background-color: #ff69b4; /* 可愛粉色按鈕 */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px; /* 超圓角 */
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3); /* 粉色陰影 */
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#submit-btn:hover {
+    background-color: #ff478a; /* 懸停時更深的粉色 */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+}
+
+.modal {
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    }
+
+.modal-box {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: #ff69b4; /* 模態框文字顏色 */
+    font-size: 1.5em;
+    }
+
+#mood-text {
+    font-weight: bold;
+    margin: 0;
+}

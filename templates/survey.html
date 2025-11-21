@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>心情問卷</title>
+
+<link rel="stylesheet" href="/static/survey.css">
+
+</head>
+<body>
+
+<div class="survey-container">
+
+    <h2>🧠 今日情緒 AI 問卷</h2>
+
+    <div class="q">1. 您目前最希望獲得什麼樣的體驗？</div>
+    <select id="q1" style="width:100%;padding:6px;">
+        <option value="療癒放鬆">A. 想要放鬆身心，擺脫壓力</option>
+        <option value="城市漫步">B. 喜歡悠閒散步，感受城市氛圍</option>
+        <option value="活力充電">C. 渴望充滿活力，動起來</option>
+        <option value="文化探索">D. 希望沉浸藝文，探索文化</option>
+        <option value="獨自沉澱">E. 需要獨處，靜靜思考</option>
+    </select>
+
+    <div class="q">2. 您對環境聲音的偏好？</div>
+    <label><input type="radio" name="q2" value="quiet_pref_quiet"> A. 越安靜越好，幾乎沒有噪音</label>
+    <label><input type="radio" name="q2" value="quiet_pref_normal" checked> B. 輕微的背景聲音可以接受</label>
+
+    <div class="q">3. 您希望今天活動的強度？</div>
+    <label><input type="radio" name="q3" value="activity_static"> A. 靜態或輕度活動，步調緩慢</label>
+    <label><input type="radio" name="q3" value="activity_active" checked> B. 中高強度活動，有活力</label>
+
+    <div class="q">4. 您目前感到壓力大嗎？</div>
+    <select id="q4" style="width:100%;padding:6px;">
+        <option value="stress_low">A. 幾乎沒有壓力</option>
+        <option value="stress_medium">B. 有一點壓力</option>
+        <option value="stress_high">C. 感到壓力很大</option>
+    </select>
+
+    <button id="submit-btn" onclick="submitSurvey()">送出</button>
+
+</div>
+
+<!-- Mood 動畫 Modal -->
+<div id="mood-modal" class="modal">
+  <div class="modal-box">
+    <h2 id="mood-text"></h2>
+  </div>
+</div>
+
+<script src="/static/survey.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+[
+  {"name": "北美館", "lat": 25.0726, "lon": 121.524, "category": "art_events", "value": 90},
+  {"name": "華山文創園區", "lat": 25.0441, "lon": 121.529, "category": "art_events", "value": 85},
+  {"name": "台北當代藝術館", "lat": 25.0526, "lon": 121.5203, "category": "art_events", "value": 80},
+  {"name": "松菸文創園區", "lat": 25.0442, "lon": 121.563, "category": "art_events", "value": 82},
+  {"name": "誠品南西活動空間", "lat": 25.0567, "lon": 121.5205, "category": "art_events", "value": 75}
+]

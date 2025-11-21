@@ -1,0 +1,7 @@
+[
+  {"name": "大安區空品站", "lat": 25.026, "lon": 121.543, "category": "air", "value": 72},
+  {"name": "中山區空品站", "lat": 25.068, "lon": 121.526, "category": "air", "value": 75},
+  {"name": "士林區空品站", "lat": 25.093, "lon": 121.526, "category": "air", "value": 78},
+  {"name": "文山區空品站", "lat": 24.998, "lon": 121.573, "category": "air", "value": 82},
+  {"name": "信義區空品站", "lat": 25.033, "lon": 121.565, "category": "air", "value": 70}
+]
