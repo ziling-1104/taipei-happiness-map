@@ -23,13 +23,11 @@
 
 Clone 專案：
 
-Bash
-
+```bash
 git clone https://github.com/ziling-1104/taipei-happiness-map.git
 cd taipei-happiness-map
 後端設定： (包括設定 .env 檔中的 API Keys 和資料庫連線)
-
-Bash
+```
 
 # 範例：安裝依賴並啟動後端服務
 cd backend
