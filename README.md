@@ -17,12 +17,7 @@
 🟡 交互式地圖套件：folium
 
 ## 🧭 使用指南
-這是任何程式碼專案的關鍵，應提供清晰的步驟讓評審或任何人能成功運行。
-
-環境要求： (例如：Node.js vX.X, Python vX.X)
-
 Clone 專案：
-
 ```bash
 git clone https://github.com/ziling-1104/taipei-happiness-map.git
 cd taipei-happiness-map
@@ -31,10 +26,8 @@ cd taipei-happiness-map
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # macOS / Linux
-# .venv\Scripts\activate  # Windows PowerShell
+.venv\Scripts\activate
 
 pip install -r requirements.txt
-
 python app.py
 ```
