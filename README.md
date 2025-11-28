@@ -6,8 +6,7 @@
 並從臺北市資料大平臺中擷取資料並生成互動地圖，<br>
 透過數據科學，為市民客製化推薦「最適合散心、運動、放鬆」的地點。
 
-## 🧭 使用指南
-
+## 🖥️ 工具概述
 這是一個可直接執行的 Python 專案（Flask + Folium + Pandas + Requests）。
 
 主要使用之程式語言：Python
@@ -17,31 +16,7 @@
 🟡 資料分析與處理套件：pandas, numpy<br>
 🟡 交互式地圖套件：folium
 
-💡 3. 核心概念與功能亮點 (Core Concepts & Features)
-以圖文結合的方式，展示專案的關鍵價值。
-
-3.1 數據驅動的幸福指標
-公式/邏輯簡述： 說明如何將 OpenData 轉換為加權指標（例如：幸福指數 = a*F_空氣品質 + b*F_綠覆率 - c*F_噪音）。
-
-關鍵 OpenData 來源： 列出最重要的幾個資料集名稱（空氣品質、公園資料、噪音監測等）。
-
-3.2 系統核心功能
-心情導向篩選： 根據使用者當前心情 (e.g., #壓力大, #想運動) 即時推薦地點。
-
-互動遊戲化 (Gamification)： 簡述「幸福點亮」或「環境尋寶」任務，鼓勵用戶線下體驗。
-
-數據透明化： 點擊地點，顯示該地的 OpenData 貢獻數據。
-
-💻 4. 技術架構 (Technical Stack & Architecture)
-使用圖表（如果可以）或文字，清晰說明程式的運作流程。
-
-架構圖： (推薦加入一張簡要的系統架構圖：OpenData -> 後端處理 (Python) -> PostGIS DB -> 前端 App)
-
-使用的技術棧： 列表重申 (例如：Frontend: React Native, Backend: Flask/Node.js, Database: PostgreSQL + PostGIS)
-
-OpenData 處理流程： 簡述數據獲取、清洗、座標轉換和指數計算的步驟。
-
-🚀 5. 安裝與啟動 (Installation & Getting Started)
+## 🧭 使用指南
 這是任何程式碼專案的關鍵，應提供清晰的步驟讓評審或任何人能成功運行。
 
 環境要求： (例如：Node.js vX.X, Python vX.X)
